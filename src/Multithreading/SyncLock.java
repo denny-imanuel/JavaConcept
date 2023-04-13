@@ -24,24 +24,4 @@ public class SyncLock {
         count++;
         System.out.println(count);
     }
-
-    public void ExecuteThread() throws InterruptedException {
-        var main = new SyncLock();
-        var thread1 = new Thread(()-> {
-            for (int i=0; i<100; i++){
-                main.LockAndCount();
-                //main.SyncAndCount();
-            }
-        });
-        var thread2 = new Thread(()-> {
-            for (int i=0; i<100; i++){
-                main.LockAndCount();
-                // main.SyncAndCount();
-            }
-        });
-        thread1.start();
-        thread2.start();
-        thread1.join();
-        thread2.join();
-    }
 }

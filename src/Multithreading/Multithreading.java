@@ -1,8 +1,6 @@
 package Multithreading;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 
 // this class explain how to use basic multithreading in java
 public class Multithreading {
@@ -46,12 +44,68 @@ public class Multithreading {
         }
     }
 
+    // how to execute a runnable task (no return value) using delta one liner in java
     public void RunnableTask() {
         Runnable runnable = ()-> {
             System.out.println("Running Thread");
         };
-
         Thread thread = new Thread(runnable);
         thread.start();
+    }
+
+    // how to execute a callable task (has return value) using delta one liner in java
+    public void CallableTask() {
+        Callable<String> callable = () -> {
+            System.out.println("Running Thread");
+            return "Hello";
+        };
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Future<String> future = executorService.submit(callable);
+    }
+
+    // this is how to implement basic object locking in java
+    public void ObjectLocking() throws InterruptedException {
+        var main = new SyncLock();
+        var thread1 = new Thread(()-> {
+            for (int i=0; i<100; i++){
+                main.LockAndCount();    // check this function
+            }
+        });
+        var thread2 = new Thread(()-> {
+            for (int i=0; i<100; i++){
+                main.LockAndCount();    // check this function
+            }
+        });
+        thread1.start();
+        thread2.start();
+        thread1.join();
+        thread2.join();
+    }
+
+    // this is how to implement basic object synchronization in java
+    public void ObjectSynchronization() throws InterruptedException {
+        var main = new SyncLock();
+        var thread1 = new Thread(()-> {
+            for (int i=0; i<100; i++){
+                try {
+                    main.SyncAndCount();  // check this function
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        var thread2 = new Thread(()-> {
+            for (int i=0; i<100; i++){
+                try {
+                    main.SyncAndCount();  // check this function
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        thread1.start();
+        thread2.start();
+        thread1.join();
+        thread2.join();
     }
 }

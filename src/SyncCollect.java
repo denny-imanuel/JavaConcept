@@ -1,5 +1,7 @@
 import java.util.*;
 
+// This class shows how to use synchronized collection. Synchronized collection use blocking method via locking mechanism,
+// by locking a collection from incoming thread until the current thread finish executing
 public class SyncCollect {
 
     public void SyncList() throws InterruptedException {
@@ -12,6 +14,7 @@ public class SyncCollect {
         thread1.start();
         thread2.start();
     }
+
 
     public void SyncHashSet() throws InterruptedException {
         var syncSet = Collections.synchronizedSet(new HashSet<Integer>());
@@ -52,7 +55,7 @@ public class SyncCollect {
     }
 
     public void SyncTreeMap() throws InterruptedException {
-        var syncMap = Collections.synchronizedMap(new TreeMap<Integer, String>());
+        var syncMap = Collections.synchronizedSortedMap(new TreeMap<Integer, String>());
         Runnable task = () -> {
             syncMap.put(3, "ccc"); System.out.println("Thread " + Thread.currentThread().getId() + "-" + syncMap);
             syncMap.put(2, "bbb"); System.out.println("Thread " + Thread.currentThread().getId() + "-" + syncMap);

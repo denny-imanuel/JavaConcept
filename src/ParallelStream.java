@@ -1,7 +1,10 @@
 import java.util.*;
 import java.util.stream.Collectors;
 
+// this class explains how to use parallel stream in java to process synchronized collections
 public class ParallelStream {
+
+    // how to use filter function on parallel stream to filter out list item based on an equality criteria
     public void FilterList() {
         var list = Collections.synchronizedList(new ArrayList<String>());
         list.addAll(Arrays.asList("aaa", "bbb", "ccc", "ddd", "eee"));
@@ -10,6 +13,7 @@ public class ParallelStream {
         System.out.println(filtered);
     }
 
+    // how to use filter function on parallel stream to filter out hashmap key/value based on an equality criteria
     public void FilterDict() {
         var dict = Collections.synchronizedMap(new HashMap<Integer, String>());
         dict.put(1, "aaa");
@@ -22,6 +26,7 @@ public class ParallelStream {
         System.out.println(byval);
     }
 
+    // how to use map function on parallel stream to manipulate list item to calculate/process the data
     public void MapList() {
         var list = Collections.synchronizedList(new ArrayList<Integer>());
         list.addAll(Arrays.asList(1, 2, 3, 4, 5));
@@ -30,6 +35,7 @@ public class ParallelStream {
         System.out.println(mapped);
     }
 
+    // how to use map function on parallel stream to manipulate hashmap key/value to calculate/process the data
     public void MapDict() {
         var dict = Collections.synchronizedMap(new HashMap<Integer, String>());
         dict.put(1, "a");
@@ -42,6 +48,7 @@ public class ParallelStream {
         System.out.println(byval);
     }
 
+    // how to use collect function on parallel stream to convert it to another list format
     public void CollectList() {
         var list = Collections.synchronizedList(new ArrayList<Integer>());
         list.addAll(Arrays.asList(1, 2, 3, 4, 5));
@@ -50,6 +57,7 @@ public class ParallelStream {
         System.out.println(collected);
     }
 
+    // how to use collect function on parallel stream to convert it to another hashmap format
     public void CollectDict() {
         var dict = Collections.synchronizedMap(new HashMap<Integer, String>());
         dict.put(1, "a");
@@ -62,6 +70,7 @@ public class ParallelStream {
         System.out.println(byval);
     }
 
+    // how to use sorted function on parallel stream to sort the item within a list
     public void StreamSorted() {
         var input = Collections.synchronizedList(new ArrayList<Integer>());
         input.addAll(Arrays.asList(2, 4, 3, 5, 1));
@@ -72,6 +81,7 @@ public class ParallelStream {
         System.out.println(desc);
     }
 
+    // how to use distinct function on parallel stream to find distinct value within list
     public void StreamDistinct() {
         var input = Collections.synchronizedList(new ArrayList<Integer>());
         input.addAll(Arrays.asList(1, 1, 2, 2, 3, 3));
@@ -80,6 +90,7 @@ public class ParallelStream {
         System.out.println(result);
     }
 
+    // how to use foreach function to loop over item within the list and hashmap
     public void ForEach() {
         var list = Collections.synchronizedList(new ArrayList<String>());
         list.addAll(Arrays.asList("aaa", "bbb", "ccc", "ddd", "eee"));

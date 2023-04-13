@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.stream.Collectors;
 
+// how to use java stream to process collections. For multithreading stream take a look on ParallelStream
 public class Stream {
 
     public void FilterList() {
